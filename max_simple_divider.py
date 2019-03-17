@@ -1,4 +1,4 @@
-#Наибольший простой делитель
+#max simple divider
 def simple(x):
     y = 1
     is_simple = True
@@ -23,7 +23,7 @@ def divider(x, num):
 
 div = []
 count = 1
-number = int(input("Введите число: "))
+number = int(input("Enter number: "))
 
 while count < number:
     simp = simple(count)
