@@ -1,8 +1,19 @@
+class ShortInputException(Exception):
+    '''Пользовательский класс исключения'''
+    def __init__(self, length, atleast):
+        Exception.__init__(self)
+        self.length = length
+        self.atleast = atleast
+
 try:
-    text = input('Введите текст')
+    text = input('Введи что-нибудь --> ')
+    if len(text) < 3:
+        raise ShortInputException(len(text), 3)
 except EOFError:
-    print('ВНЕЗАПНЫЙ КОНЕЦ ФАЙЛА')
-except KeyboardInterrupt:
-    print('Вы отменили операцию')
+    print('End Of File, bitch')
+except ShortInputException as ex:
+    print('ShortInputException: Длина введенной строки -- {0}; \
+ожидалось, как минимум, {1}'.format(ex.length, ex.atleast))
+
 else:
-    print('Вы ввели {0}'.format(text))
+    print('Нет исключений')
